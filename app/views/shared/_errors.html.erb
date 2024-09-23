@@ -1,10 +1,7 @@
 <% if resource.errors.any? %>
-  <div class="bg-red-300 rounded py-2 px-3">
-    <h2 class="font-bold text-center text-red-800">An error ocurred while saving it.</h2>
-    <ul>
-      <% resource.errors.each do |error| %>
-        <li class="font-semibold text-sm text-red-800"> - <%= error.full_message %></li>
-      <% end %>
-    </ul>
+  <div class="bg-red-300 rounded p-3 mb-3">
+    <% resource.errors.full_messages.each do |message| %>
+      <li class="font-semibold text-sm text-red-800"><%= message %></li>
+    <% end %>
   </div>
 <% end %>
