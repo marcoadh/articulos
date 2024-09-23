@@ -69,3 +69,5 @@ end
 gem "tailwindcss-rails", "~> 2.7"
 
 gem "htmlbeautifier", "~> 1.4"
+
+gem "awesome_print", "~> 1.9"
