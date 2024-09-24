@@ -4,10 +4,8 @@ export default class extends Controller {
   static targets = ["sidebar"]
 
   connect() {
-    setTimeout(() => {
-      this.sidebarTarget.classList.remove('translate-x-full')
-      this.sidebarTarget.classList.add('translate-x-0')
-    }, 50)
+    this.sidebarTarget.classList.remove('translate-x-full')
+    this.sidebarTarget.classList.add('translate-x-0')
   }
 
   close() {
@@ -21,8 +19,7 @@ export default class extends Controller {
   }
 
   submitEnd(e) {
-    if (e.detail.success) {
-      this.close()
-    }
+    if (!e.detail.success) return
+    this.close()
   }
 }

@@ -1,13 +1,13 @@
-<%= form_with model: @article, class: '' do |form| %>
-  <%= render 'shared/errors', resource: @article %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+<%= form_with model: article, class: '' do |form| %>
+  <%= render 'shared/errors', resource: article %>
+  <div class="mb-4 flex flex-col gap-2">
+    <%= form.label :title, class: 'font-semibold' %>
+    <%= form.text_field :title, class: 'rounded-2xl border-gray-500 mb-4 w-full' %>
+  </div>
+  <div class="mb-4">
+    <%= form.rich_text_area :body, class: "rounded-2xl border-gray-500 mb-4 w-full" %>
   </div>
   <div>
-    <%= form.rich_text_area :body %>
-  </div>
-  <div>
-    <%= form.submit class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    <%= form.submit class: "px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-2xl cursor-pointer shadow-sm" %>
   </div>
 <% end %>
