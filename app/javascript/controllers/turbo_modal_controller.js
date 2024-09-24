@@ -18,6 +18,11 @@ export default class extends Controller {
     }, 250)
   }
 
+  closeWithKeyboard(e) {
+    if (e.code !== "Escape") return
+    this.close()
+  }
+
   submitEnd(e) {
     if (!e.detail.success) return
     this.close()
