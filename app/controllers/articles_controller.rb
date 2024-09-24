@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.order(created_at: :desc)
+    @articles = Article.order(created_at: :desc).with_rich_text_content_and_embeds 
   end
 
   def show
@@ -15,9 +15,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.prepend('articles', partial: 'articles/article', locals: { article: @article })
-        end
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend('articles', partial: 'articles/article', locals: { article: @article }) }
         format.html { redirect_to articles_path, notice: 'Artículo fue creado exitosamente.' }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -28,6 +26,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :content)
   end
 end
