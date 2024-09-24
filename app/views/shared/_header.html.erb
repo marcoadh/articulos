@@ -1,4 +1,4 @@
 <div class="bg-gray-900 flex justify-center items-center text-teal-500 py-1 px-2">
   <%= link_to 'Artículos', root_path, class: "mx-2 font-bold" %>
-  <%= link_to 'Crear Artículo', new_article_path, class: "mx-2 font-bold", data: { turbo_frame: "turbo-modal" } %>
+  <%= button_to 'Crear Artículo', new_article_path, method: :get, class: "mx-2 font-bold", data: { turbo_frame: "turbo-modal" } %>
 </div>
