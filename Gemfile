@@ -73,3 +73,5 @@ gem "htmlbeautifier", "~> 1.4"
 gem "awesome_print", "~> 1.9"
 
 gem "view_component", "~> 3.14"
+
+gem "mini_magick", "~> 4.12"

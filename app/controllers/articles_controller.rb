@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
 
   def index
-    @articles = Article.order(created_at: :desc).with_rich_text_content_and_embeds 
+    @articles = Article.order(created_at: :desc).with_rich_text_content_and_embeds
   end
 
   def show
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.prepend('articles', partial: 'articles/article', locals: { article: @article })
+          render turbo_stream: turbo_stream.prepend('articles', partial: 'articles/article_card', locals: { article: @article })
         end
       else
         format.html do
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(@article, partial: 'articles/article', locals: { article: @article })
+          render turbo_stream: turbo_stream.replace("article_show_#{@article.id}", partial: 'articles/article', locals: { article: @article })
         end
       else
         format.html do

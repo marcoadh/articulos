@@ -1,11 +1,11 @@
-<%= form_with model: article, class: '' do |form| %>
+<%= form_with model: article do |form| %>
   <%= render 'shared/errors', resource: article %>
   <div class="mb-4 flex flex-col gap-2">
     <%= form.label :title, class: 'font-semibold' %>
     <%= form.text_field :title, class: 'rounded-2xl border-gray-500 mb-4 w-full' %>
   </div>
   <div class="mb-4">
-    <%= form.rich_text_area :content, class: "rounded-2xl border-gray-500 mb-4 w-full" %>
+    <%= form.rich_text_area :content, class: "rounded-2xl border-gray-500 mb-4 prose max-w-none" %>
   </div>
   <div>
     <%= form.submit class: "px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-2xl cursor-pointer shadow-sm" %>

@@ -3,6 +3,6 @@
 </div>
 <div class="mx-auto w-full max-w-screen-lg py-16 px-5">
   <div class="grid grid-cols-1 gap-5 md:gap-10" id="articles">
-    <%= render partial: "article", collection: @articles %>
+    <%= render partial: "article_card", collection: @articles, as: :article %>
   </div>
 </div>
