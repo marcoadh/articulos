@@ -1,18 +1,30 @@
-<div class="gap-5 rounded-xl bg-white p-8 shadow-xl shadow-black/5 sm:p-10 outline">
-  <div class="justify-left flex w-full sm:justify-between">
-    <div>
-      <h2 class="font-heading text-2xl font-black transition lg:text-3xl mb-2">
-        <%= article.title %>
-      </h2>
-      <!-- <time class="mt-4 block font-semibold text-gray-500">Posted on 8th August, 2023</time> -->
-      <time class="block font-semibold text-gray-500">Publicado el <%= article.fmt_published %></time>
-      <time class="block font-semibold text-gray-500">Actualizado el <%= article.fmt_updated %></time>
-      <h3 class="pt-3 text-xl font-medium text-gray-700">
-        <%= article.content.to_plain_text.truncate(100) %>
-      </h3>
-      <div class="mt-10">
-        <%= link_to 'Leer más →', article, class: 'rounded-xl bg-blue-500 px-3 py-2 font-medium text-white transition hover:brightness-110' %>
+<%= turbo_frame_tag article do %>
+  <div class="gap-5 rounded-xl bg-white p-8 shadow-xl shadow-black/5 sm:p-10 outline">
+    <div class="justify-left flex w-full sm:justify-between">
+      <div>
+        <h2 class="font-heading text-2xl font-black transition lg:text-3xl mb-2">
+          <%= article.title %>
+        </h2>
+        <time class="block font-semibold text-gray-500">Publicado el <%= article.fmt_published %></time>
+        <time class="block font-semibold text-gray-500">Actualizado el <%= article.fmt_updated %></time>
+        <h3 class="pt-3 text-xl font-medium text-gray-700">
+          <%= article.content.to_plain_text.truncate(100) %>
+        </h3>
+        <div class="mt-10 flex gap-2">
+          <%= link_to 'Leer más', article,
+                                  class: 'rounded-xl bg-teal-500 px-4 py-2 font-medium text-white transition hover:brightness-110',
+                                  data: {
+                                    turbo_frame: "_top"
+                                  } %>
+
+          <%= button_to 'Editar', edit_article_path(article),
+                                  class: 'rounded-xl bg-blue-500 px-4 py-2 font-medium text-white transition hover:brightness-110',
+                                  method: :get,
+                                  data: {
+                                    turbo_frame: "turbo-modal"
+                                  } %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
